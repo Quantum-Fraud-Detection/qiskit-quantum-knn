@@ -21,7 +21,7 @@ from qiskit_quantum_knn.qknn.utils import get_subsystems_counts
 
 logger = logging.getLogger(__name__)
 
-UnionQInstBaseB = Union[QuantumInstance, qkp.BaseBackend]
+UnionQInstBaseB = Union[QuantumInstance, qkp.Backend]
 OptionalQInstance = Optional[UnionQInstBaseB]
 
 
@@ -52,7 +52,7 @@ class QKNeighborsClassifier(QuantumAlgorithm):
         data_points (array-like): data shaped ``(k, d)``, with ``k`` the number
             of data points, and ``d`` the dimensionality of the data. This is
             the unlabelled data which  must be classified by the algorithm.
-        quantum_instance (:class: `QuantumInstance` or :class: BaseBackend):
+        quantum_instance (:class: `QuantumInstance` or :class: Backend):
             the instance which ``qiskit`` will use to run the quantum algorithm.
 
     Example:
@@ -488,10 +488,10 @@ class QKNeighborsClassifier(QuantumAlgorithm):
             logger.debug(
                 "Only one value is counted in the control qubit: {0:d},"
                 "setting the counts of state {1:d} to 0."
-                    .format(
-                        sole_occurrence,
-                        to_substitute
-                    )
+                .format(
+                    sole_occurrence,
+                    to_substitute
+                )
             )
             control_counts = {
                 str(to_substitute): 0,
